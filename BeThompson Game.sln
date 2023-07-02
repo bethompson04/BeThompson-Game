@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BeThompson Game", "Source\G
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Source\Engine\Core\Core.vcxproj", "{79CB9CBC-1E3E-4FCA-A3EC-28ACCABE1A1C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Renderer", "Source\Engine\Renderer\Renderer.vcxproj", "{EFCA60DE-5052-4859-B011-FE2F92D65B37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -35,6 +37,14 @@ Global
 		{79CB9CBC-1E3E-4FCA-A3EC-28ACCABE1A1C}.Release|x64.Build.0 = Release|x64
 		{79CB9CBC-1E3E-4FCA-A3EC-28ACCABE1A1C}.Release|x86.ActiveCfg = Release|Win32
 		{79CB9CBC-1E3E-4FCA-A3EC-28ACCABE1A1C}.Release|x86.Build.0 = Release|Win32
+		{EFCA60DE-5052-4859-B011-FE2F92D65B37}.Debug|x64.ActiveCfg = Debug|x64
+		{EFCA60DE-5052-4859-B011-FE2F92D65B37}.Debug|x64.Build.0 = Debug|x64
+		{EFCA60DE-5052-4859-B011-FE2F92D65B37}.Debug|x86.ActiveCfg = Debug|Win32
+		{EFCA60DE-5052-4859-B011-FE2F92D65B37}.Debug|x86.Build.0 = Debug|Win32
+		{EFCA60DE-5052-4859-B011-FE2F92D65B37}.Release|x64.ActiveCfg = Release|x64
+		{EFCA60DE-5052-4859-B011-FE2F92D65B37}.Release|x64.Build.0 = Release|x64
+		{EFCA60DE-5052-4859-B011-FE2F92D65B37}.Release|x86.ActiveCfg = Release|Win32
+		{EFCA60DE-5052-4859-B011-FE2F92D65B37}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +52,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7205EC1C-FB22-485F-A419-F1D843B50F6A} = {9DA444A3-5D97-4413-B6AD-34003FB0EA86}
 		{79CB9CBC-1E3E-4FCA-A3EC-28ACCABE1A1C} = {3743A7D5-FE77-4CE9-AE54-F7E6378DF7CE}
+		{EFCA60DE-5052-4859-B011-FE2F92D65B37} = {3743A7D5-FE77-4CE9-AE54-F7E6378DF7CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F81A4D5-08A5-4C7A-ABA3-27C0DE3E2456}
