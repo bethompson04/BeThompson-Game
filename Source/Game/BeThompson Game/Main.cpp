@@ -1,51 +1,98 @@
-#include "Core/Random.h"
-#include "Core/FileIO.h"
-#include "Core/Memory.h"
-#include "Core/Time.h"
+#include "Core/Core.h"
 #include "Renderer/Renderer.h"
 #include <iostream>
+#include <vector>
 
 
 using namespace std;
 
-int main()
+using vec2 = MEN::Vector2; // Alias / Nickname
+
+class Star
 {
-	MEN::g_memoryTracker.DisplayInfo();
-	int* p = new int;
-	MEN::g_memoryTracker.DisplayInfo();
-	delete p;
-	MEN::g_memoryTracker.DisplayInfo();
+public:
+	Star(const MEN::Vector2& pos, const MEN::Vector2& vel) :
+		m_pos{ pos },
+		m_vel{ vel }
+	{}
 
-	MEN::Time timer;
-	for (int i = 0; i < 1000000; i++) {}
-	cout << timer.GetElapsedNanoseconds() << endl;
+	void UpdatePos()
+	{
+		m_pos += m_vel;
+	}
 
-	/*auto start = std::chrono::high_resolution_clock::now();
+	void WrapCheck(int width, int height)
+	{
+		if (m_pos.x >= width )m_pos.x = 0;
+		if (m_pos.y >= height )m_pos.y = 0;
+	}
 
-	for (int i = 0; i < 100000000; i++) {}
-	auto end = std::chrono::high_resolution_clock::now();
+	void Draw(MEN::Renderer& renderer)
+	{
+		renderer.DrawPoint(m_pos.x, m_pos.y);
+	}
 
-	cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();*/
-	
+public:
+	MEN::Vector2 m_pos;
+	MEN::Vector2 m_vel;
+};
+
+int main(int argc, char* argv[])
+{
+	//for (int i = 1; i <= 10; i++) cout << ((float)i/10) << endl;
+
+	MEN::seedRandom((unsigned int)time(nullptr));
+
+	cout << MEN::random() << endl;
+
+	MEN::Renderer renderer;
+	renderer.Initialize();
+	renderer.CreateWindow("CSC196", 800, 600);
+
+	vector<Star> starSystem;
+	for (int i = 0; i < 1000; i++)
+	{
+		MEN::Vector2 pos(MEN::random(renderer.GetWidth()), MEN::random(renderer.GetHeight()));
+		MEN::Vector2 vel(MEN::randomf(1, 4), 0.0f);
+
+		starSystem.push_back(Star(pos, vel));
+	}
+
+	while (true)
+	{
+		renderer.SetColor(0,0,0,0);
+		renderer.BeginFrame();
+
+		//draw
+
+		MEN::Vector2 vel(1.0f, 0.3f);
+		
+		for (auto& star : starSystem)
+		{
+
+			star.UpdatePos();
+			star.WrapCheck(renderer.GetWidth(), renderer.GetHeight());
+
+			renderer.SetColor(255, 255, 255, 255);
+			//renderer.SetColor(MEN::random(256), MEN::random(256), MEN::random(256), 255);
+			star.Draw(renderer);
+		}
+
+		//for (int i = 0; i < 10000; i ++)
+		//{
+		//	/*
+		//	* int x = MEN::random(renderer.GetWidth());
+		//	* int y = MEN::random(renderer.GetHeight());
+		//	*/
+
+		//MEN::Vector2 pos(MEN::random(renderer.GetWidth()), MEN::random(renderer.GetHeight()));
 
 
-	//cout << MEN::getFilePath() << endl;
-	//MEN::setFilePath("Assets");
-	//cout << MEN::getFilePath() << endl;
-
-	//size_t size = 0;
-	//MEN::getFileSize("game.txt", size);
-	//cout << "File size is: " << size << endl;
-
-	//std::string s = "";
-	//MEN::readFile("game.txt", s);
-	////cout << s << endl;
-	//
-
-	//MEN::seedRandom((unsigned int)time(nullptr));
-	//for (int i = 0; i < 3; i++)
-	//{
-	//cout << MEN::random(10, 20) << endl;
-	//}
-
+		//renderer.SetColor(MEN::random(256), MEN::random(256), MEN::random(256), 255);
+		////renderer.DrawLine(pos.x, pos.y);
+		//renderer.DrawPoint(pos.x, pos.y);
+		//}
+		renderer.EndFrame();
+	}
+	return 0;
 }
