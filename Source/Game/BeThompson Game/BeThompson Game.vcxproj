@@ -153,15 +153,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MultiShotEnemy.cpp" />
+    <ClCompile Include="PewGame.cpp" />
+    <ClCompile Include="PewPew.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="rock.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Engine\Audio\Audio.vcxproj">
+      <Project>{7d175a5d-17b1-4241-b2ba-313903833935}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Engine\Core\Core.vcxproj">
       <Project>{79cb9cbc-1e3e-4fca-a3ec-28accabe1a1c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Engine\Framework\Framework.vcxproj">
+      <Project>{23b3fb07-26c3-422c-b3b1-87d9fbd6cc3a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Engine\Input\Input.vcxproj">
+      <Project>{6f1a3dd5-2cb5-415c-85f3-acee17333209}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Engine\Renderer\Renderer.vcxproj">
       <Project>{efca60de-5052-4859-b011-fe2f92d65b37}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="MultiShotEnemy.h" />
+    <ClInclude Include="PewGame.h" />
+    <ClInclude Include="PewPew.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="rock.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
